@@ -9,6 +9,8 @@
 # end
 # @param {TreeNode} root
 # @return {Integer[]}
+
+# 递归
 def preorder_traversal(root)
     @res = []
     preorder(root)
@@ -20,4 +22,25 @@ def preorder(node)
     @res << node.val
     preorder(node.left)
     preorder(node.right)
+end
+
+# 迭代
+def preorder_traversal(root)
+    res = []
+    return res if root.nil?
+
+    stack = []
+    node = root
+    while stack.length > 0 || node
+        while node
+            res << node.val
+            stack << node
+            node = node.left
+        end
+        node = stack.pop
+        node = node.right
+    end
+
+    return res
+
 end
