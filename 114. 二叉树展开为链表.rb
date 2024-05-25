@@ -9,6 +9,8 @@
 # end
 # @param {TreeNode} root
 # @return {Void} Do not return anything, modify root in-place instead.
+
+# 方法一：前序遍历
 def flatten(root)
     @list = []
     preorder(root)
