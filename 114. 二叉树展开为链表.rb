@@ -29,3 +29,24 @@ def preorder(node)
     preorder(node.left)
     preorder(node.right)
 end
+
+# 方法二：前序遍历和展开同步进行
+def flatten(root)
+    return if root.nil?
+    stack = [root]
+    pre = nil
+    while stack.length > 0
+        curr = stack.pop
+        if !pre.nil?
+            pre.left = nil
+            pre.right = curr
+        end
+
+        left = curr.left
+        right = curr.right
+        stack << right if !right.nil?
+        stack << left if !left.nil?
+        pre = curr
+    end
+
+end
